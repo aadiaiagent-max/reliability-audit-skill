@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "target": "./example-service",
+  "createdAt": "2026-09-18T08:29:00-04:00",
+  "runId": "sample-run-2026-09-18",
+  "findings": [
+    {
+      "id": "finding-timeout-001",
+      "candidateId": "candidate-timeout-001",
+      "unitId": "outbound-timeouts",
+      "status": "confirmed",
+      "severity": "high",
+      "title": "Outbound client has no request deadline",
+      "summary": "The payment client can wait indefinitely when its dependency stops responding.",
+      "boundary": "network",
+      "failureClass": "timeout",
+      "impact": "Blocked workers can exhaust the request pool during a dependency outage.",
+      "evidence": [
+        {
+          "path": "src/payments/client.js",
+          "symbol": "createPaymentClient",
+          "note": "Client options do not define a request timeout."
+        }
+      ],
+      "remediation": "Set an explicit timeout and propagate the caller deadline.",
+      "tags": [
+        "timeout",
+        "dependency"
+      ]
+    },
+    {
+      "id": "finding-slo-002",
+      "candidateId": "candidate-slo-002",
+      "unitId": "service-observability",
+      "status": "needs_validation",
+      "severity": "medium",
+      "title": "Latency objective lacks visible SLI wiring",
+      "summary": "Documentation states a latency objective, but the metric definition needs verification.",
+      "boundary": "process",
+      "evidence": [
+        {
+          "path": "docs/slo.md",
+          "note": "Latency objective is documented for the checkout endpoint."
+        }
+      ],
+      "tags": [
+        "slo",
+        "observability"
+      ]
+    }
+  ]
+}

@@ -30,6 +30,12 @@ The skill stays read-only against the target tree, uses sandboxed local checks o
 | `skills/reliability-audit/validate-findings.cjs` | CLI validator for findings |
 | `skills/reliability-audit/validate-coverage-ledger.cjs` | CLI validator for coverage ledger |
 | `skills/reliability-audit/*.test.cjs` | Self-contained Node tests for validators |
+| `examples/sample-findings.json` | Valid sample findings artifact |
+| `examples/sample-coverage-ledger.json` | Valid sample coverage ledger |
+
+## Examples
+
+The [`examples/`](examples/) directory contains validator-passing sample findings and coverage-ledger artifacts to use as starting points for local runs.
 
 ## Install
 

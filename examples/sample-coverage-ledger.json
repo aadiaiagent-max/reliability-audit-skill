@@ -1,0 +1,74 @@
+{
+  "version": "1.0",
+  "target": "./example-service",
+  "createdAt": "2026-09-18T08:29:00-04:00",
+  "units": [
+    {
+      "id": "outbound-timeouts",
+      "title": "Outbound timeout propagation",
+      "category": "failure-class",
+      "scope": {
+        "paths": [
+          "src/payments/",
+          "src/clients/"
+        ],
+        "symbols": [
+          "createPaymentClient"
+        ],
+        "description": "Deadlines and timeout behavior for outbound dependency calls."
+      },
+      "status": "covered",
+      "priority": "p0",
+      "evidencePaths": [
+        "src/payments/client.js"
+      ]
+    },
+    {
+      "id": "service-observability",
+      "title": "Service health and latency signals",
+      "category": "observability",
+      "scope": {
+        "paths": [
+          "src/metrics/",
+          "docs/slo.md"
+        ],
+        "description": "SLIs, latency objectives, and alert coverage for the service."
+      },
+      "status": "in_progress",
+      "priority": "p1",
+      "evidencePaths": [
+        "docs/slo.md"
+      ]
+    },
+    {
+      "id": "profile-cache-consistency",
+      "title": "Profile cache invalidation",
+      "category": "data-consistency",
+      "scope": {
+        "paths": [
+          "src/profile/cache/"
+        ],
+        "description": "Write and invalidation paths for cached profile data."
+      },
+      "status": "pending",
+      "priority": "p1"
+    },
+    {
+      "id": "queue-boundary",
+      "title": "Worker queue failure boundary",
+      "category": "boundary",
+      "scope": {
+        "paths": [
+          "src/worker/queue.js"
+        ],
+        "symbols": [
+          "consumeJob"
+        ],
+        "description": "Retry, acknowledgement, and poison-message behavior at the worker boundary."
+      },
+      "status": "deferred",
+      "priority": "p2",
+      "notes": "Queue adapter is not included in the example service slice."
+    }
+  ]
+}
